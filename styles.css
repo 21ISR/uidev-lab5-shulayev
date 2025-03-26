@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 body {
+    display: grid;
+    grid-template-columns: repeat(3 33.3%);
+    grid-template-rows: 5% 90% 5%;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
     font-family: Arial, sans-serif;
     height: 100vh;
     gap: 15px;
@@ -18,45 +25,94 @@ header {
     justify-content: center;
     font-size: 1.5em;
     font-weight: bold;
+    grid-area: header;
 }
 nav {
     background: #2ecc71;
     padding: 15px;
+    grid-area: nav;
 }
 main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
     background: #ecf0f1;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    grid-area: main;
+    grid-area:
+        "article"
+        "artickle";
 }
 .article {
+    grid-area: artickle;
     background: white;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas:
+        "masonrywide masonrywide item"
+        "tall small2 ."
+        "tall lareg lareg"
+        "item2 lareg lareg"
+        "masonrywide2 masonrywide2 small3"
+        "tall2 . ."
+        "tall2 . .";
+    height: 100vh;
     gap: 10px;
 }
 .masonry .grid-item {
+    grid-area: item;
     background: white;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.masonry .item2{
+    grid-area: item2;
+}
+
 .masonry .wide {
+    grid-area: masonrywide;
 }
+
+.masonry .wide2 {
+    grid-area: masonrywide2;
+}
+
 .masonry .tall {
+    grid-area: tall;
 }
+
+.masonry .tall2 {
+    grid-area: tall2;
+}
+
 .masonry .large {
+    grid-area: lareg;
 }
+
 .masonry .small {
+    grid-area: small2;
 }
+
+.masonry .small2 {
+    grid-area: small3;
+}
+
 aside {
     background: #f39c12;
     padding: 15px;
     color: white;
+    grid-area: aside;
 }
 footer {
     background: #e74c3c;
@@ -65,4 +121,5 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
+    grid-area: footer;
 }
